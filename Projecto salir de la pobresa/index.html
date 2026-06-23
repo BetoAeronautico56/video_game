@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#151a22">
+  <title>Escuadron de Tres Carriles</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <section class="hud" aria-label="Estado de la partida">
+      <div>
+        <span class="label">Puntos</span>
+        <strong id="score">0</strong>
+      </div>
+      <div>
+        <span class="label">Soldados</span>
+        <strong id="soldiers">1</strong>
+      </div>
+      <div>
+        <span class="label">Vida</span>
+        <strong id="health">3/3</strong>
+      </div>
+      <div>
+        <span class="label">Aliado</span>
+        <strong id="ally">0%</strong>
+      </div>
+      <button id="pauseBtn" class="icon-btn" type="button" aria-label="Pausar partida" title="Pausar">||</button>
+    </section>
+
+    <section class="upgrade-panel" aria-label="Mejoras">
+      <div class="bank">
+        <span class="label">Mejoras</span>
+        <strong id="coins">0 pts</strong>
+      </div>
+      <button id="damageUpgradeBtn" type="button">Daño</button>
+      <button id="rateUpgradeBtn" type="button">Cadencia</button>
+      <button id="healthUpgradeBtn" type="button">Vida</button>
+    </section>
+
+    <canvas id="game" width="390" height="720" aria-label="Juego"></canvas>
+
+    <section class="controls" aria-label="Controles">
+      <button id="leftBtn" type="button" aria-label="Mover a la izquierda">&lt;</button>
+      <button id="restartBtn" type="button">Reiniciar</button>
+      <button id="rightBtn" type="button" aria-label="Mover a la derecha">&gt;</button>
+    </section>
+
+    <section id="menuScreen" class="overlay menu-screen">
+      <h1>Escuadron de Tres Carriles</h1>
+      <p>Defiende el carril central, reúne refuerzos y decide cuándo cargar al aliado.</p>
+      <div class="menu-actions">
+        <button id="startBtn" type="button">Iniciar partida</button>
+        <button id="scoresBtn" class="secondary" type="button">Puntuaciones anteriores</button>
+        <button id="exitBtn" class="quiet" type="button">Salir</button>
+      </div>
+      <p id="exitMessage" class="status" aria-live="polite"></p>
+    </section>
+
+    <section id="scoresScreen" class="overlay" hidden>
+      <h2>Puntuaciones</h2>
+      <ol id="scoresList" class="scores-list"></ol>
+      <button id="scoresBackBtn" type="button">Volver al menu</button>
+    </section>
+
+    <section id="pauseScreen" class="overlay compact" hidden>
+      <h2>Pausa</h2>
+      <p>La partida queda detenida.</p>
+      <div class="menu-actions">
+        <button id="resumeBtn" type="button">Continuar</button>
+        <button id="pauseMenuBtn" class="secondary" type="button">Volver al menu</button>
+      </div>
+    </section>
+
+    <section id="gameOverScreen" class="overlay" hidden>
+      <h2>Partida terminada</h2>
+      <p id="finalScore"></p>
+      <div class="menu-actions">
+        <button id="replayBtn" type="button">Jugar otra vez</button>
+        <button id="gameOverScoresBtn" class="secondary" type="button">Ver puntuaciones</button>
+        <button id="gameOverMenuBtn" class="quiet" type="button">Menu</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>

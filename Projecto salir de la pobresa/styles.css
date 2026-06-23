@@ -1,0 +1,263 @@
+:root {
+  color-scheme: dark;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #10141b;
+  color: #f4f7fb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 22% 15%, rgba(74, 178, 255, 0.18), transparent 30%),
+    linear-gradient(145deg, #111720 0%, #161d24 52%, #121318 100%);
+}
+
+button {
+  border: 0;
+  color: #f9fbff;
+  background: #2d6cdf;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.app {
+  position: relative;
+  width: min(100vw, 430px);
+  height: min(100dvh, 820px);
+  min-height: 560px;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  padding: max(10px, env(safe-area-inset-top)) 10px max(10px, env(safe-area-inset-bottom));
+  gap: 10px;
+}
+
+.hud {
+  display: grid;
+  grid-template-columns: 1.15fr 0.95fr 0.8fr 0.9fr 48px;
+  gap: 8px;
+}
+
+.hud div,
+.bank {
+  min-width: 0;
+  padding: 8px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: rgba(20, 26, 34, 0.84);
+}
+
+.label {
+  display: block;
+  color: #aab6c7;
+  font-size: 11px;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.hud strong {
+  display: block;
+  margin-top: 2px;
+  font-size: 20px;
+  line-height: 1.1;
+}
+
+.upgrade-panel {
+  display: grid;
+  grid-template-columns: 1.05fr repeat(3, 1fr);
+  gap: 8px;
+}
+
+.upgrade-panel button {
+  min-width: 0;
+  min-height: 42px;
+  padding: 6px;
+  border-radius: 8px;
+  background: #286f75;
+  font-size: 12px;
+  line-height: 1.1;
+}
+
+.upgrade-panel button:disabled {
+  color: #77869a;
+  background: #202936;
+  cursor: not-allowed;
+}
+
+.bank strong {
+  display: block;
+  margin-top: 2px;
+  font-size: 16px;
+  line-height: 1.1;
+}
+
+.icon-btn {
+  width: 48px;
+  min-height: 48px;
+  align-self: stretch;
+  border-radius: 8px;
+  background: #28313e;
+  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.2);
+  letter-spacing: 0;
+}
+
+#game {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  background: #20252d;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.35);
+  touch-action: none;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 64px 1fr 64px;
+  gap: 10px;
+}
+
+.controls button,
+.overlay button {
+  min-height: 48px;
+  border-radius: 8px;
+  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.2);
+}
+
+.secondary {
+  background: #286f75;
+}
+
+.quiet {
+  background: #28313e;
+}
+
+#restartBtn {
+  background: #28313e;
+}
+
+.overlay {
+  position: absolute;
+  inset: 72px 20px 76px;
+  display: grid;
+  place-content: center;
+  gap: 16px;
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  background: rgba(16, 20, 27, 0.88);
+  text-align: center;
+  backdrop-filter: blur(8px);
+}
+
+.overlay[hidden] {
+  display: none;
+}
+
+.overlay h1 {
+  margin: 0;
+  font-size: clamp(28px, 9vw, 42px);
+  line-height: 0.98;
+}
+
+.overlay h2 {
+  margin: 0;
+  font-size: 30px;
+  line-height: 1;
+}
+
+.overlay p {
+  max-width: 310px;
+  margin: 0 auto;
+  color: #cbd5e1;
+  line-height: 1.45;
+}
+
+.menu-actions {
+  display: grid;
+  gap: 10px;
+  width: min(100%, 290px);
+  margin: 0 auto;
+}
+
+.status:empty {
+  display: none;
+}
+
+.status {
+  min-height: 18px;
+  color: #fbbf24;
+  font-size: 13px;
+}
+
+.scores-list {
+  width: min(100%, 300px);
+  min-height: 160px;
+  max-height: 260px;
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  margin: 0 auto;
+  padding: 0;
+  overflow: auto;
+  list-style-position: inside;
+  text-align: left;
+}
+
+.scores-list li {
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: rgba(12, 19, 27, 0.78);
+  color: #e2e8f0;
+}
+
+.scores-list span {
+  color: #9fb1c6;
+  font-size: 13px;
+}
+
+.compact {
+  inset-block: 26%;
+}
+
+@media (max-height: 620px) {
+  .hud strong {
+    font-size: 17px;
+  }
+
+  .upgrade-panel button {
+    min-height: 38px;
+    font-size: 11px;
+  }
+
+  .controls button {
+    min-height: 42px;
+  }
+
+  .icon-btn {
+    min-height: 42px;
+  }
+
+  .overlay {
+    inset: 64px 18px 62px;
+  }
+
+  .compact {
+    inset-block: 20%;
+  }
+}

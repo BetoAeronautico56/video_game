@@ -1,0 +1,21 @@
+{
+  "name": "projecto-salir-de-la-pobresa",
+  "version": "1.2.0",
+  "description": "Juego mobile simple hecho con HTML, CSS y JavaScript puro.",
+  "main": "game.js",
+  "scripts": {
+    "copy:web": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"Copy-Item -Force index.html,styles.css,game.js,manifest.json www\"",
+    "sync:android": "npm run copy:web && npx cap sync android",
+    "open:android": "npm run sync:android && npx cap open android"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@capacitor/android": "^8.3.4",
+    "@capacitor/app": "^8.1.0",
+    "@capacitor/cli": "^8.3.4",
+    "@capacitor/core": "^8.3.4"
+  }
+}

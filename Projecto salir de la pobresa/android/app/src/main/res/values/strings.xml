@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Escuadron de Tres Carriles</string>
+    <string name="title_activity_main">Escuadron de Tres Carriles</string>
+    <string name="package_name">com.carlo.escuadron</string>
+    <string name="custom_url_scheme">com.carlo.escuadron</string>
+</resources>
