@@ -1,0 +1,335 @@
+[page~1] Actividad 1: Metodologías y elementos del proceso de diseño UX.
+[page~1] Caso de análisis: Optimización de la experiencia de usuario en “Escuadrón de Tres Carriles”
+[page~1] Objetivo general.
+[page~1] Optimizar la experiencia de usuario de Escuadrón de Tres Carriles mediante el rediseño de la arquitectura, navegación y retroalimentación visual, buscando reducir la curva de aprendizaje y facilitar la interacción sin incrementar innecesariamente la complejidad técnica del videojuego.
+[page~1] Objetivos específicos
+[page~1] Facilitar que un jugador nuevo comprenda las mecánicas principales. 
+[page~1] Mejorar la jerarquía de la información mostrada durante la partida. 
+[page~1] Reducir acciones accidentales. 
+[page~1] Mostrar claramente el resultado de las acciones. 
+[page~1] Facilitar la navegación entre menú, partida, pausa, resultados y puntuaciones. 
+[page~1] Mantener las mejoras dentro de un alcance razonable para un desarrollador individual. 
+[page~1] Medir posteriormente si las modificaciones realmente mejoran la experiencia.
+[page~1] Públicos principales
+[page~2] Tabla 1 Públicos principales del proyecto.Nota. Elaboración propia. Se identifican dos segmentos principales
+[page~2] 1. Brief del proyecto
+[page~2] El proyecto consiste en analizar y mejorar la experiencia de usuario de un videojuego denominado Escuadrón de Tres Carriles.
+[page~2] Actualmente el videojuego cuenta con cinco estados principales:
+[page~2] Menú principal. 
+[page~2]  IMAGES: ['media/image1.png']
+[page~2] Figura 1. Menú principal de Escuadrón de Tres Carriles.Nota. Captura de pantalla de la aplicación Escuadrón de Tres Carriles, desarrollada por Carlos Alberto Pérez Lora y ejecutada en un entorno local. Elaboración propia.
+[page~2] Pantalla de puntuaciones. 
+[page~2]  IMAGES: ['media/image2.png']
+[page~2] Figura 2. Pantalla de puntuaciones de Escuadrón de Tres Carriles.Nota. Captura de pantalla de la aplicación Escuadrón de Tres Carriles, desarrollada por Carlos Alberto Pérez Lora y ejecutada en un entorno local. Elaboración propia.
+[page~2] Pantalla principal de juego. 
+[page~3]  IMAGES: ['media/image3.png']
+[page~3] Figura 3. Pantalla principal de Escuadrón de Tres Carriles.Nota. Captura de pantalla de la aplicación Escuadrón de Tres Carriles, desarrollada por Carlos Alberto Pérez Lora y ejecutada en un entorno local. Elaboración propia.
+[page~3] Pantalla de pausa. 
+[page~3]  IMAGES: ['media/image4.png']
+[page~3] Figura 4. Pantalla de pausa de Escuadrón de Tres Carriles.Nota. Captura de pantalla de la aplicación Escuadrón de Tres Carriles, desarrollada por Carlos Alberto Pérez Lora y ejecutada en un entorno local. Elaboración propia.
+[page~3] Pantalla de partida terminada. 
+[page~3]  IMAGES: ['media/image5.png']
+[page~3] Figura 5.Pantalla de partida terminada de Escuadrón de Tres Carriles.Nota. Captura de pantalla de la aplicación Escuadrón de Tres Carriles, desarrollada por Carlos Alberto Pérez Lora y ejecutada en un entorno local. Elaboración propia.
+[page~3] El objetivo del rediseño no sería modificar el concepto ni las mecánicas principales del juego, sino conseguir que el jugador:
+[page~3] comprenda más rápidamente qué debe hacer.
+[page~3] identifique el estado de la partida sin esfuerzo.
+[page~3] sepa qué significan los indicadores.
+[page~3] pueda ejecutar acciones sin confusión.
+[page~3] reciba retroalimentación clara.
+[page~4] tenga una experiencia más fluida desde que abre el juego hasta que termina una partida. 
+[page~4] Esto es importante porque en UX una interfaz visualmente correcta no necesariamente significa que sea intuitiva.
+[page~4] Problema
+[page~4] El videojuego actualmente dispone de las funciones necesarias para jugar, consultar puntuaciones, pausar y reiniciar partidas; sin embargo, existen elementos de la interfaz que podrían provocar dudas en jugadores que acceden por primera vez.
+[page~4] Algunos ejemplos observados en las pantallas proporcionadas son:
+[page~4] No existe una explicación inicial de las reglas. 
+[page~4] No se explica qué representan los tres carriles. 
+[page~4] Indicadores como Daño 810, Cadencia 1080, Vida 1350 y Aliado 0 % requieren interpretación por parte del jugador. 
+[page~4] Los botones < y > permiten inferir desplazamiento, pero no explican claramente su función. 
+[page~4] El botón Reiniciar permanece muy accesible durante la partida y podría pulsarse accidentalmente. 
+[page~4] Los elementos que aparecen dentro de los carriles no siempre indican inmediatamente si representan enemigos, aliados, mejoras o refuerzos. 
+[page~4] El sistema informa puntos y bajas, pero podría ofrecer una retroalimentación más clara sobre por qué se obtuvieron. 
+[page~4] Cuando termina una partida se proporciona un resumen muy breve, perdiéndose la oportunidad de ayudar al jugador a entender su desempeño.
+[page~4] Públicos objetivo
+[page~4] Aquí considero dos perspectivas.
+[page~4] Usuario principal: jugador
+[page~4] Personas que utilizan el videojuego y cuyo objetivo principal es jugar rápidamente y comprender las mecánicas sin necesidad de consultar instrucciones externas.
+[page~5] Podemos dividirlos en:
+[page~5] Jugador nuevo
+[page~5] No conoce las mecánicas.
+[page~5] Necesita:
+[page~5] entender qué debe hacer; 
+[page~5] identificar controles; 
+[page~5] comprender indicadores; 
+[page~5] distinguir enemigos, aliados y refuerzos; 
+[page~5] recibir retroalimentación inmediata. 
+[page~5] Jugador recurrente
+[page~5] Ya conoce las reglas.
+[page~5] Necesita:
+[page~5] entrar rápidamente a una partida; 
+[page~5] evitar tutoriales obligatorios; 
+[page~5] consultar sus puntuaciones; 
+[page~5] mejorar resultados; 
+[page~5] reiniciar rápidamente; 
+[page~5] visualizar claramente su progreso. 
+[page~5] Usuario/parte interesada secundaria: desarrollador
+[page~5] En este caso yo.
+[page~5] Mi objetivo no es necesariamente tener la interfaz más compleja, sino encontrar un equilibrio entre:
+[page~5] Experiencia del jugador ↔ esfuerzo de desarrollo.
+[page~5] Desde mi perspectiva debo considerar:
+[page~5] tiempo de implementación; 
+[page~5] complejidad técnica; 
+[page~5] número de componentes nuevos; 
+[page~6] pruebas; 
+[page~6] mantenimiento; 
+[page~6] riesgo de introducir errores; 
+[page~6] necesidad de nuevos recursos gráficos; 
+[page~6] costo económico; 
+[page~6] beneficio UX obtenido.
+[page~6] Propuesta de valor
+[page~6] La propuesta sería:
+[page~6] Un videojuego de estrategia sencillo de aprender, rápido de utilizar y con suficiente información visual para que el jugador comprenda sus decisiones sin interrumpir el ritmo de la partida.
+[page~6] La idea principal sería:
+[page~6] “Fácil de aprender, pero no necesariamente fácil de dominar.”
+[page~6] Para el proyecto use.
+[page~6] Metodología : Design Thinking
+[page~6] La utilizaríamos como metodología general.
+[page~6] Empatizar
+[page~6] Comprender cómo juega una persona que nunca ha visto el videojuego.
+[page~6] Ejemplo:
+[page~6] Dar el juego a 5 personas sin explicarles cómo funciona.
+[page~6] Observando:
+[page~6] dónde hacen clic; 
+[page~6] qué creen que significan los tres carriles; 
+[page~6] sí saben cómo moverse; 
+[page~6] sí comprenden los refuerzos; 
+[page~6] sí encuentran el botón de pausa; 
+[page~6] sí saben para qué sirven las mejoras. 
+[page~6] Lo principal es: No ayudarlos. Porque queremos descubrir dónde falla la interfaz.
+[page~7] Definir
+[page~7] Después de las pruebas encontré que mis amigos tuvieron los siguientes detalles:
+[page~7] “4 de 5 usuarios no comprendieron inicialmente que < y > servían para cambiar de carril.”
+[page~7] Entonces ya tengo un problema UX medible.
+[page~7] No sería:
+[page~7] “Creo que el botón se ve feo.”
+[page~7] Sino:
+[page~7] “Un porcentaje de los participantes no identificó correctamente la función del control a primera vista.”
+[page~7] Idear
+[page~7] Después genero posibles soluciones.
+[page~7] Por ejemplo:
+[page~7] Problema:
+[page~7] Los jugadores no entienden los botones < >.
+[page~7] Soluciones:
+[page~7] colocar texto “Mover izquierda/derecha”; 
+[page~7] utilizar iconos de carriles; 
+[page~7] animar al personaje cuando se muestran los controles; 
+[page~7] tutorial inicial; 
+[page~7] mostrar una mano indicando el desplazamiento.
+[page~7] Criterios de éxito
+[page~8] El ejemplo de la actividad establece que deberían existir evidencias observables para evaluar el resultado. 
+[page~8] Podemos establecer:
+[page~8] Comprensión
+[page~8] ≥ 80 % de jugadores nuevos comprende los controles sin asistencia.
+[page~8] Primera partida
+[page~8] ≥ 80 % completa una primera partida sin solicitar ayuda.
+[page~8] Errores
+[page~8] Reducir reinicios accidentales prácticamente a cero.
+[page~8] Navegación
+[page~8] 100 % de usuarios debe ser capaz de regresar al menú o iniciar otra partida.
+[page~8] Aprendizaje
+[page~8] Jugador debe comprender:
+[page~8] cómo moverse; 
+[page~8] qué es un refuerzo; 
+[page~8] qué es un enemigo; 
+[page~8] para qué sirven los soldados; 
+[page~8] cómo utilizar al aliado. 
+[page~8] Satisfacción
+[page~8] Encuesta posterior:
+[page~8] ¿Qué tan fácil fue aprender a jugar?
+[page~8] Escala 1–5.
+[page~8] Meta:
+[page~8] ≥ 4/5.
+[page~9] 2. Proponer la arquitectura de información que se utilizará
+[page~9]  IMAGES: ['media/image6.png']
+[page~9] Nota. Wireframe generado mediante ChatGPT (OpenAI, 2026), a partir de requerimientos, decisiones de diseño y criterios UX definidos por el autor. OpenAI. (2026). ChatGPT [Modelo de lenguaje de inteligencia artificial generativa]. https://chatgpt.com/
+[page~9] 3.Flujo de navegación del usuario
+[page~9]  IMAGES: ['media/image7.png']
+[page~9] Nota. Wireframe generado mediante ChatGPT (OpenAI, 2026), a partir de requerimientos, decisiones de diseño y criterios UX definidos por el autor. OpenAI. (2026). ChatGPT [Modelo de lenguaje de inteligencia artificial generativa]. https://chatgpt.com/
+[page~9] 4. Desarrollar los wireframes de diseño UX
+[page~10] Se plantean 7 wireframes para mejorar la experiencia del usuario, de estas 7 se incluyen mejoras y dos nuevas adquisiciones.
+[page~10]  IMAGES: ['media/image8.png']
+[page~10] Nota. Wireframe generado mediante ChatGPT (OpenAI, 2026), a partir de requerimientos, decisiones de diseño y criterios UX definidos por el autor. OpenAI. (2026). ChatGPT [Modelo de lenguaje de inteligencia artificial generativa]. https://chatgpt.com/
+[page~10] 1. Wireframe: Menú principal
+[page~10] Mejoras implementadas
+[page~10] En el menú principal se agregó una jerarquía más clara entre las acciones disponibles. El botón “Jugar” se presenta como la acción principal, mientras que opciones como “Cómo jugar”, “Puntuaciones”, “Ajustes” y “Salir” quedan como acciones secundarias.
+[page~10] También se incorporó una explicación breve de la mecánica del juego:
+[page~10] “Defiende el carril central, reúne refuerzos y activa al aliado para sobrevivir.”
+[page~10] Además, se añadieron pequeñas referencias visuales sobre tres conceptos importantes:
+[page~11] refuerzos; 
+[page~11] enemigos; 
+[page~11] aliado. 
+[page~11] ¿Cómo mejora la experiencia de usuario?
+[page~11] Esta pantalla reduce la incertidumbre inicial. El jugador puede entender rápidamente de qué trata el juego antes de iniciar una partida.
+[page~11] La incorporación de “Cómo jugar” es especialmente importante porque evita que el usuario tenga que aprender únicamente mediante prueba y error.
+[page~11] También mejora la navegación, ya que cada opción tiene una función claramente diferenciada.
+[page~11] Beneficio UX principal
+[page~11] Reduce la curva de aprendizaje inicial.
+[page~11]  IMAGES: ['media/image9.png']
+[page~11] Nota. Wireframe generado mediante ChatGPT (OpenAI, 2026), a partir de requerimientos, decisiones de diseño y criterios UX definidos por el autor. OpenAI. (2026). ChatGPT [Modelo de lenguaje de inteligencia artificial generativa]. https://chatgpt.com/
+[page~11] 2. Wireframe: Cómo jugar / Tutorial
+[page~11] Esta es probablemente una de las mejoras más importantes de toda la propuesta.
+[page~11] Mejoras implementadas
+[page~11] Se creó una pantalla de tutorial que divide el aprendizaje en pasos:
+[page~11] Moverse entre carriles. 
+[page~11] Recoger refuerzos. 
+[page~11] Eliminar enemigos. 
+[page~11] Cargar al aliado. 
+[page~11] Mejorar estadísticas. 
+[page~11] Además, cada explicación está acompañada por una representación visual de la acción.
+[page~11] También existe una opción como:
+[page~11] “No volver a mostrar”
+[page~11] y un botón:
+[page~11] “Entendido”
+[page~11] ¿Cómo mejora la experiencia de usuario?
+[page~11] La información se presenta de manera progresiva y estructurada.
+[page~11] En lugar de mostrar al usuario un bloque largo de instrucciones, se divide el aprendizaje en pequeñas unidades.
+[page~11] Esto reduce la carga cognitiva, porque el jugador no tiene que aprender todas las reglas simultáneamente.
+[page~11] La combinación de texto + imagen también facilita la comprensión.
+[page~11] Beneficio UX principal
+[page~11] Permite que un usuario nuevo comprenda el juego antes de enfrentarse a la partida.
+[page~11]  IMAGES: ['media/image10.png']
+[page~12] Nota. Wireframe generado mediante ChatGPT (OpenAI, 2026), a partir de requerimientos, decisiones de diseño y criterios UX definidos por el autor. OpenAI. (2026). ChatGPT [Modelo de lenguaje de inteligencia artificial generativa]. https://chatgpt.com/
+[page~12] 3. Wireframe: Puntuaciones
+[page~12] Mejoras implementadas
+[page~12] La nueva pantalla organiza las puntuaciones de manera mucho más estructurada.
+[page~12] Se muestran:
+[page~12] posición; 
+[page~12] puntos; 
+[page~12] bajas; 
+[page~12] soldados; 
+[page~12] tiempo. 
+[page~12] También aparecen filtros o categorías como:
+[page~12] General; 
+[page~12] Tiempo; 
+[page~12] Bajas; 
+[page~13] Soldados. 
+[page~13] Otro cambio importante es la presentación del tiempo.
+[page~13] En lugar de mostrar:
+[page~13] 338 segundos
+[page~13] se muestra:
+[page~13] 5:38
+[page~13] ¿Cómo mejora la experiencia de usuario?
+[page~13] El formato minutos:segundos es mucho más fácil de interpretar.
+[page~13] Además, separar cada tipo de dato en columnas evita que el usuario tenga que leer una línea larga e interpretar manualmente cada valor.
+[page~13] Los filtros permiten que el jugador compare su desempeño desde distintos puntos de vista.
+[page~13] Por ejemplo, puede que no tenga la mejor puntuación, pero sí haya sobrevivido durante más tiempo.
+[page~13] Esto aporta una mayor sensación de progreso.
+[page~13] Beneficio UX principal
+[page~13] Mejora la legibilidad y hace que las estadísticas sean más útiles para el jugador.
+[page~13]  IMAGES: ['media/image11.png']
+[page~14] Nota. Wireframe generado mediante ChatGPT (OpenAI, 2026), a partir de requerimientos, decisiones de diseño y criterios UX definidos por el autor. OpenAI. (2026). ChatGPT [Modelo de lenguaje de inteligencia artificial generativa]. https://chatgpt.com/
+[page~14] 4. Wireframe: Pantalla de juego
+[page~14] Este es el wireframe más importante porque corresponde a la interacción principal.
+[page~14] Mejoras implementadas
+[page~14] Se reorganizó la información superior para que los datos importantes sean visibles inmediatamente:
+[page~14] puntos; 
+[page~14] soldados; 
+[page~14] vida; 
+[page~14] porcentaje del aliado. 
+[page~14] Además, los tres carriles aparecen claramente identificados:
+[page~14] REFUERZOS | ENEMIGOS | ALIADO
+[page~14] También se mejoró el sistema de mejoras.
+[page~14] Ahora cada mejora muestra:
+[page~14] tipo; 
+[page~14] nivel; 
+[page~15] costo; 
+[page~15] acción para mejorar. 
+[page~15] ¿Cómo mejora la experiencia de usuario?
+[page~15] La principal ventaja es que cada elemento tiene ahora una función mucho más evidente.
+[page~15] Antes, un jugador podía preguntarse qué significaba:
+[page~15] Daño 810
+[page~15] Ahora podría interpretarse como una mejora específica con nivel y costo.
+[page~15] Esto reduce la ambigüedad.
+[page~15] También mejora mucho la comprensión de los controles.
+[page~15] Un símbolo como:    <
+[page~15] puede significar muchas cosas.
+[page~15] Mientras que:
+[page~15] ← Mover izquierda
+[page~15] comunica directamente la acción.
+[page~15] Beneficio UX principal
+[page~15] Reduce errores de interpretación durante la partida.
+[page~15] También disminuye la carga mental porque los elementos están agrupados por función.
+[page~15]  IMAGES: ['media/image12.png']
+[page~16] Nota. Wireframe generado mediante ChatGPT (OpenAI, 2026), a partir de requerimientos, decisiones de diseño y criterios UX definidos por el autor. OpenAI. (2026). ChatGPT [Modelo de lenguaje de inteligencia artificial generativa]. https://chatgpt.com/
+[page~16] 5. Wireframe: Pausa
+[page~16] Mejoras implementadas
+[page~16] La pantalla de pausa ahora concentra las acciones relacionadas con la gestión de la partida:
+[page~16] Continuar; 
+[page~16] Reiniciar partida; 
+[page~16] Cómo jugar; 
+[page~16] Volver al menú. 
+[page~16] Esto es una mejora muy importante porque anteriormente Reiniciar estaba directamente disponible durante el juego.
+[page~16] ¿Cómo mejora la experiencia de usuario?
+[page~17] Mover la opción de reinicio al menú de pausa evita pulsaciones accidentales.
+[page~17] Desde UX esto se relaciona con el principio de prevención de errores.
+[page~17] También tiene sentido conceptual.
+[page~17] Durante la partida deberían aparecer únicamente acciones necesarias para jugar.
+[page~17] Las acciones administrativas como:
+[page~17] reiniciar; 
+[page~17] salir; 
+[page~17] consultar ayuda; 
+[page~17] pueden agruparse dentro de pausa.
+[page~17] Beneficio UX principal
+[page~17] Reduce acciones accidentales y simplifica la pantalla de juego.
+[page~17]  IMAGES: ['media/image13.png']
+[page~17] Nota. Wireframe generado mediante ChatGPT (OpenAI, 2026), a partir de requerimientos, decisiones de diseño y criterios UX definidos por el autor. OpenAI. (2026). ChatGPT [Modelo de lenguaje de inteligencia artificial generativa]. https://chatgpt.com/
+[page~17] 6. Wireframe: Partida terminada
+[page~17] Mejoras implementadas
+[page~18] La pantalla final ahora ofrece un resumen más detallado.
+[page~18] Se muestran:
+[page~18] puntos obtenidos; 
+[page~18] bajas; 
+[page~18] soldados; 
+[page~18] tiempo; 
+[page~18] mejor puntuación. 
+[page~18] Además se incluye una comparación con el récord.
+[page~18] Por ejemplo:
+[page~18] “Te faltaron 127 puntos para superar tu récord.”
+[page~18] Las opciones son:
+[page~18] Jugar otra vez; 
+[page~18] Ver puntuaciones; 
+[page~18] Menú. 
+[page~18] ¿Cómo mejora la experiencia de usuario?
+[page~18] Anteriormente el resultado de la partida era bastante limitado.
+[page~18] La nueva versión proporciona retroalimentación sobre el desempeño.
+[page~18] Esto es importante en videojuegos porque el usuario necesita saber:
+[page~18] cómo le fue; 
+[page~18] si mejoró; 
+[page~18] cuánto le falta para alcanzar un objetivo. 
+[page~18] Mostrar el récord también introduce una motivación para volver a jugar.
+[page~18] Beneficio UX principal
+[page~18] Incrementa la sensación de progreso y recompensa.
+[page~18]  IMAGES: ['media/image14.png']
+[page~19] Nota. Wireframe generado mediante ChatGPT (OpenAI, 2026), a partir de requerimientos, decisiones de diseño y criterios UX definidos por el autor. OpenAI. (2026). ChatGPT [Modelo de lenguaje de inteligencia artificial generativa]. https://chatgpt.com/
+[page~19] 7. Wireframe: Confirmación de reinicio
+[page~19] Esta es una pequeña pantalla, pero tiene mucho valor UX.
+[page~19] Mejoras implementadas
+[page~19] Cuando el usuario selecciona reiniciar aparece una confirmación:
+[page~19] ¿Reiniciar partida?
+[page~19] Se perderá el progreso actual.
+[page~19] Opciones:
+[page~19] Reiniciar; 
+[page~19] Cancelar. 
+[page~19] ¿Cómo mejora la experiencia de usuario?
+[page~19] Evita que una acción irreversible ocurra accidentalmente.
+[page~19] Esto es especialmente importante si el jugador lleva varios minutos de partida.
+[page~19] Sin esta confirmación podría perder todo su progreso mediante un toque incorrecto.
+[page~19] Beneficio UX principal
+[page~19] Prevención de errores y reducción de frustración.
+[page~19] Conclusión
+[page~19] El desarrollo de esta propuesta permitió analizar y replantear la experiencia de usuario del videojuego Escuadrón de Tres Carriles, partiendo de una interfaz funcional para identificar oportunidades de mejora relacionadas principalmente con la comprensión de las mecánicas, la navegación, la prevención de errores y la retroalimentación proporcionada al jugador.
+[page~19] Finalmente, los wireframes desarrollados representan una propuesta inicial y no una solución definitiva. El siguiente paso sería realizar pruebas de usabilidad con jugadores reales, recopilar información sobre sus dificultades y utilizar los resultados para realizar nuevas iteraciones. Esto mantiene la propuesta alineada con Design Thinking, donde la creación de prototipos y su evaluación permiten aprender del usuario y refinar progresivamente la solución. 
+[page~19] En conclusión, la mejora de la experiencia de usuario no consiste únicamente en modificar la apariencia de un videojuego, sino en diseñar una interacción comprensible, consistente y eficiente que responda a las necesidades del jugador, sin perder de vista la viabilidad técnica y económica para el desarrollador.
+[page~19] Referencias
+[page~19] Design Thinking no debe entenderse necesariamente como un proceso estrictamente lineal, ya que sus diferentes etapas pueden retroalimentarse conforme se obtiene nueva información de los usuarios (Interaction Design Foundation, 2025).
+[page~19] Interaction Design Foundation. (2025). The 5 stages in the design thinking process.The 5 Stages in the Design Thinking Process
+TABLE: Segmento | Perfil | Principal uso | Desarrolladores de software | Front-end, back-end. | Código, versiones, colaboración y proyectos | Jugadores | Público en general. | Uso repetido del videojuego para mejorar sus puntajes.

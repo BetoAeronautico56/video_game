@@ -4,7 +4,7 @@
   "description": "Juego mobile simple hecho con HTML, CSS y JavaScript puro.",
   "main": "game.js",
   "scripts": {
-    "copy:web": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"Copy-Item -Force index.html,styles.css,game.js,manifest.json www\"",
+    "copy:web": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"Copy-Item -Force index.html,styles.css,game.js,audio-manager.js,manifest.json www\"",
     "sync:android": "npm run copy:web && npx cap sync android",
     "open:android": "npm run sync:android && npx cap open android"
   },

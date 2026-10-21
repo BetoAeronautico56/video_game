@@ -1,0 +1,10 @@
+{
+  "name": "Escuadron de Tres Carriles",
+  "short_name": "Escuadron",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#10141b",
+  "theme_color": "#151a22",
+  "icons": []
+}

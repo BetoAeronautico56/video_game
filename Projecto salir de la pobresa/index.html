@@ -1,90 +1,845 @@
 <!doctype html>
 <html lang="es">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#151a22">
-  <title>Escuadron de Tres Carriles</title>
-  <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <main class="app">
-    <section class="hud" aria-label="Estado de la partida">
-      <div>
-        <span class="label">Puntos</span>
-        <strong id="score">0</strong>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#081422">
+    <meta name="description" content="Tres carriles. Una estrategia. Reúne tu escuadrón y defiende la línea.">
+    <title>
+      Escuadrón de Tres Carriles
+    </title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <symbol id="i-play" viewBox="0 0 24 24">
+          <path d="m9 5 11 7-11 7Z"/>
+        </symbol>
+        <symbol id="i-book" viewBox="0 0 24 24">
+          <path d="M12 6C9 3 5 3 2 4v15c4-1 7-1 10 1 3-2 6-2 10-1V4c-3-1-7-1-10 2Zm0 0v14M5 8h4M5 12h4m6-4h4m-4 4h4"/>
+        </symbol>
+        <symbol id="i-cup" viewBox="0 0 24 24">
+          <path d="M7 3h10v7a5 5 0 0 1-10 0Zm0 2H3v3a4 4 0 0 0 4 4m10-7h4v3a4 4 0 0 1-4 4m-5 3v6m-5 0h10"/>
+        </symbol>
+        <symbol id="i-team" viewBox="0 0 24 24">
+          <circle cx="12" cy="6" r="3"/>
+          <path d="M7 21v-6a5 5 0 0 1 10 0v6ZM3 8h2m-1-1v2m15-1h2m-1-1v2M2 20v-5h3m14 0h3v5"/>
+        </symbol>
+        <symbol id="i-enemy" viewBox="0 0 24 24">
+          <path d="M5 10a7 7 0 0 1 14 0v4l-4 3v3H9v-3l-4-3Zm3 1h2m4 0h2m-5 5h2M3 21l4-3m10 0 4 3"/>
+        </symbol>
+        <symbol id="i-heart" viewBox="0 0 24 24">
+          <path d="M12 21 3.5 12a5.5 5.5 0 0 1 8.5-7 5.5 5.5 0 0 1 8.5 7Z"/>
+        </symbol>
+        <symbol id="i-bolt" viewBox="0 0 24 24">
+          <path d="m13 2-9 12h7l-1 8 10-13h-7Z"/>
+        </symbol>
+        <symbol id="i-left" viewBox="0 0 24 24">
+          <path d="m11 5-7 7 7 7M4 12h17"/>
+        </symbol>
+        <symbol id="i-right" viewBox="0 0 24 24">
+          <path d="m13 5 7 7-7 7M20 12H3"/>
+        </symbol>
+        <symbol id="i-pause" viewBox="0 0 24 24">
+          <path d="M8 4v16M16 4v16"/>
+        </symbol>
+        <symbol id="i-restart" viewBox="0 0 24 24">
+          <path d="M4 9a8 8 0 1 1 1 9M4 3v6h6"/>
+        </symbol>
+        <symbol id="i-home" viewBox="0 0 24 24">
+          <path d="m2 11 10-9 10 9M5 9v12h5v-7h4v7h5V9"/>
+        </symbol>
+        <symbol id="i-settings" viewBox="0 0 24 24">
+          <path d="m9 3-1 3-3 1-2 4 2 2v4l4 2 3-1 3 1 4-2v-4l2-2-2-4-3-1-1-3Z"/>
+          <circle cx="12" cy="11" r="3"/>
+        </symbol>
+        <symbol id="i-exit" viewBox="0 0 24 24">
+          <path d="M10 3H3v18h7m4-15 6 6-6 6m-6-6h12"/>
+        </symbol>
+        <symbol id="i-up" viewBox="0 0 24 24">
+          <path d="m5 11 7-7 7 7m-7-7v16"/>
+        </symbol>
+        <symbol id="i-clock" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M12 6v6l4 2"/>
+        </symbol>
+        <symbol id="i-alert" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M12 6v7m0 3v2"/>
+        </symbol>
+        <symbol id="i-shield" viewBox="0 0 24 24">
+          <path d="m12 2 9 4v6c0 5-9 10-9 10S3 17 3 12V6Zm-5 9 4 4 6-7"/>
+        </symbol>
+      </defs>
+    </svg>
+    <main class="app" data-screen="menu">
+      <div id="gameShell" class="game-shell" inert aria-hidden="true">
+        <header class="hud" aria-label="Estado de la partida">
+          <div class="stat">
+            <span class="label">
+              Puntos
+            </span>
+            <strong>
+              <svg class="icon gold" aria-hidden="true">
+                <use href="#i-cup"/>
+              </svg>
+              <span id="score">
+                0
+              </span>
+            </strong>
+          </div>
+          <div class="stat">
+            <span class="label">
+              Soldados
+            </span>
+            <strong>
+              <svg class="icon green" aria-hidden="true">
+                <use href="#i-team"/>
+              </svg>
+              <span id="soldiers">
+                1
+              </span>
+            </strong>
+          </div>
+          <div class="stat">
+            <span class="label">
+              Vida
+            </span>
+            <strong>
+              <svg class="icon red" aria-hidden="true">
+                <use href="#i-heart"/>
+              </svg>
+              <span id="health">
+                3/3
+              </span>
+            </strong>
+            <progress id="healthBar" max="3" value="3" aria-label="Vida">
+            </progress>
+          </div>
+          <div class="stat">
+            <span class="label">
+              Aliado
+            </span>
+            <strong>
+              <svg class="icon cyan" aria-hidden="true">
+                <use href="#i-bolt"/>
+              </svg>
+              <span id="ally">
+                0%
+              </span>
+            </strong>
+            <progress id="allyBar" max="720" value="0" aria-label="Aliado">
+            </progress>
+          </div>
+          <button id="pauseBtn" class="pause-button secondary" type="button" aria-label="Pausar partida" title="Pausar (P o Escape)">
+            <svg class="icon " aria-hidden="true">
+              <use href="#i-pause"/>
+            </svg>
+          </button>
+        </header>
+        <div class="game-layout">
+          <section class="upgrade-panel" aria-label="Mejoras">
+            <div class="bank">
+              <span class="label">
+                Mejoras
+              </span>
+              <strong id="coins">
+                0 pts
+              </strong>
+            </div>
+            <article class="upgrade-card" data-upgrade="damage">
+              <svg class="icon red" aria-hidden="true">
+                <use href="#i-enemy"/>
+              </svg>
+              <div>
+                <h2>
+                  Daño
+                </h2>
+                <span class="upgrade-level">
+                  Nivel
+                  <b id="damageLevel">
+                    0/5
+                  </b>
+                </span>
+                <span id="damageCost" class="upgrade-cost">
+                  810 pts
+                </span>
+              </div>
+              <button id="damageUpgradeBtn" type="button" aria-label="Mejorar daño">
+                <svg class="icon " aria-hidden="true">
+                  <use href="#i-up"/>
+                </svg>
+                <span class="buy-label">
+                  Mejorar
+                </span>
+              </button>
+            </article>
+            <article class="upgrade-card" data-upgrade="rate">
+              <svg class="icon gold" aria-hidden="true">
+                <use href="#i-bolt"/>
+              </svg>
+              <div>
+                <h2>
+                  Cadencia
+                </h2>
+                <span class="upgrade-level">
+                  Nivel
+                  <b id="rateLevel">
+                    0/4
+                  </b>
+                </span>
+                <span id="rateCost" class="upgrade-cost">
+                  1080 pts
+                </span>
+              </div>
+              <button id="rateUpgradeBtn" type="button" aria-label="Mejorar cadencia">
+                <svg class="icon " aria-hidden="true">
+                  <use href="#i-up"/>
+                </svg>
+                <span class="buy-label">
+                  Mejorar
+                </span>
+              </button>
+            </article>
+            <article class="upgrade-card" data-upgrade="health">
+              <svg class="icon green" aria-hidden="true">
+                <use href="#i-heart"/>
+              </svg>
+              <div>
+                <h2>
+                  Vida
+                </h2>
+                <span class="upgrade-level">
+                  Nivel
+                  <b id="healthLevel">
+                    0/4
+                  </b>
+                </span>
+                <span id="healthCost" class="upgrade-cost">
+                  1350 pts
+                </span>
+              </div>
+              <button id="healthUpgradeBtn" type="button" aria-label="Mejorar vida">
+                <svg class="icon " aria-hidden="true">
+                  <use href="#i-up"/>
+                </svg>
+                <span class="buy-label">
+                  Mejorar
+                </span>
+              </button>
+            </article>
+            <p class="upgrade-hint">
+              Los puntos que ganas también sirven para mejorar tu escuadrón.
+            </p>
+          </section>
+          <div class="battlefield">
+            <div class="lane-labels" aria-label="Función de los carriles">
+              <span id="leftLaneLabel" class="green">
+                ✚ Refuerzos
+              </span>
+              <span class="red">
+                ⊗ Enemigos
+              </span>
+              <span class="cyan">
+                ϟ Aliado
+              </span>
+            </div>
+            <canvas id="game" width="390" height="720" tabindex="0" aria-label="Campo de batalla de tres carriles. Usa las flechas izquierda y derecha o A y D para moverte.">
+              Tu navegador necesita soporte de Canvas para jugar.
+            </canvas>
+            <p id="gameFeedback" class="game-feedback" role="status" aria-live="polite">
+            </p>
+          </div>
+          <nav class="controls" aria-label="Controles de movimiento">
+            <button id="leftBtn" class="secondary" type="button">
+              <svg class="icon " aria-hidden="true">
+                <use href="#i-left"/>
+              </svg>
+              Mover izquierda
+            </button>
+            <span class="keyboard-hint">
+              A / D · ← / →
+            </span>
+            <button id="rightBtn" class="secondary" type="button">
+              <svg class="icon " aria-hidden="true">
+                <use href="#i-right"/>
+              </svg>
+              Mover derecha
+            </button>
+          </nav>
+        </div>
       </div>
-      <div>
-        <span class="label">Soldados</span>
-        <strong id="soldiers">1</strong>
+      <section id="menuScreen" class="screen menu-screen" aria-labelledby="menuTitle" tabindex="-1">
+        <svg class="hero-scene" viewBox="0 0 900 850" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+          <defs>
+            <linearGradient id="sky" x2="0" y2="1">
+              <stop stop-color="#102d4d"/>
+              <stop offset="1" stop-color="#040c18"/>
+            </linearGradient>
+            <linearGradient id="road" x2="0" y2="1">
+              <stop stop-color="#103756"/>
+              <stop offset="1" stop-color="#040b13"/>
+            </linearGradient>
+            <radialGradient id="glow">
+              <stop stop-color="#29cfff" stop-opacity=".5"/>
+              <stop offset="1" stop-color="#29cfff" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <path fill="url(#sky)" d="M0 0h900v850H0z"/>
+          <circle cx="450" cy="440" r="270" fill="url(#glow)"/>
+          <g fill="#081626" stroke="#1d3d55">
+            <path d="M0 120h78v355H0zm88 90h72v270H88zm82 75h53v200h-53zm65 47h48v150h-48zm60 30h40v120h-40zM900 100h-78v375h78zm-88 110h-72v270h72zm-82 75h-53v200h53zm-65 47h-48v150h48zm-60 30h-40v120h40z"/>
+          </g>
+          <g stroke="#3385aa" opacity=".4">
+            <path d="M40 160v50m80 44v35m75 30v22m660-161v50m-80 44v35m-75 30v22"/>
+          </g>
+          <path d="m385 450 130 0 385 400H0Z" fill="url(#road)" stroke="#21506b"/>
+          <g stroke="#29b8fa" opacity=".35">
+            <path d="m420 450-95 400m155-400 95 400M0 750h900M85 660h730M180 570h540M280 500h340"/>
+          </g>
+          <g stroke="#d1b55f" stroke-width="5" stroke-dasharray="30 35" opacity=".4">
+            <path d="M400 470 150 850m350-380 250 380"/>
+          </g>
+          <g transform="translate(450 640)">
+            <ellipse cy="65" rx="110" ry="23" fill="#000" opacity=".5"/>
+            <path d="m-48-24-38 65 31 12 26-22h58l26 22 31-12-38-65Z" fill="#1d364a" stroke="#5a7d91" stroke-width="3"/>
+            <path d="m-23-65-16 102h78L23-65Z" fill="#284b68" stroke="#64a0be" stroke-width="3"/>
+            <path d="m-13-44-8 31h42l-8-31Z" fill="#65d4ff"/>
+            <path d="M-24 46v62m48-62v62" stroke="#19c9ff" stroke-width="12"/>
+            <path d="M-24 52v35m48-35v35" stroke="#c3f5ff" stroke-width="5"/>
+          </g>
+        </svg>
+        <div class="menu-heading">
+          <span class="eyebrow">
+            DEFENSA TÁCTICA · SECTOR 03
+          </span>
+          <h1 id="menuTitle">
+            ESCUADRÓN
+            <br>
+            DE TRES CARRILES
+          </h1>
+          <p>
+            Defiende el carril central, reúne refuerzos y activa al aliado para sobrevivir
+          </p>
+        </div>
+        <div class="menu-body">
+          <nav class="menu-actions" aria-label="Menú principal">
+            <button id="startBtn" class="primary" type="button">
+              <svg class="icon " aria-hidden="true">
+                <use href="#i-play"/>
+              </svg>
+              Jugar
+            </button>
+            <button id="tutorialBtn" class="secondary" type="button">
+              <svg class="icon " aria-hidden="true">
+                <use href="#i-book"/>
+              </svg>
+              Cómo jugar
+            </button>
+            <button id="scoresBtn" class="secondary" type="button">
+              <svg class="icon " aria-hidden="true">
+                <use href="#i-cup"/>
+              </svg>
+              Puntuaciones
+            </button>
+            <button id="settingsBtn" class="secondary" type="button">
+              <svg class="icon " aria-hidden="true">
+                <use href="#i-settings"/>
+              </svg>
+              Ajustes
+            </button>
+            <button id="exitBtn" class="secondary" type="button">
+              <svg class="icon " aria-hidden="true">
+                <use href="#i-exit"/>
+              </svg>
+              Salir
+            </button>
+          </nav>
+          <aside class="mission-card" aria-label="Objetivos">
+            <div>
+              <svg class="icon green" aria-hidden="true">
+                <use href="#i-team"/>
+              </svg>
+              <p>
+                Recoge refuerzos
+                <br>
+                <span>
+                  Aumenta tus soldados.
+                </span>
+              </p>
+            </div>
+            <div>
+              <svg class="icon red" aria-hidden="true">
+                <use href="#i-enemy"/>
+              </svg>
+              <p>
+                Elimina enemigos
+                <br>
+                <span>
+                  Defiende la línea central.
+                </span>
+              </p>
+            </div>
+            <div>
+              <svg class="icon cyan" aria-hidden="true">
+                <use href="#i-bolt"/>
+              </svg>
+              <p>
+                Carga al aliado
+                <br>
+                <span>
+                  Dispárale para activarlo.
+                </span>
+              </p>
+            </div>
+            <strong>
+              Tres carriles.
+              <br>
+              Una estrategia.
+            </strong>
+          </aside>
+        </div>
+        <p id="exitMessage" class="status" role="status">
+        </p>
+        <footer class="menu-footer">
+          REÚNE. DEFIENDE. SOBREVIVE.
+        </footer>
+      </section>
+      <section id="tutorialScreen" class="screen " aria-labelledby="tutorialTitle" tabindex="-1" hidden>
+        <header class="screen-heading">
+          <h2 id="tutorialTitle">
+            ¿Cómo jugar?
+          </h2>
+          <p>
+            Guía rápida para unirte al escuadrón.
+          </p>
+        </header>
+        <ol class="tutorial-steps">
+          <li>
+            <span class="step-number">
+              1
+            </span>
+            <div>
+              <h3>
+                Muévete entre carriles
+              </h3>
+              <p>
+                Usa los botones, desliza sobre el campo o pulsa ← / → y A / D.
+              </p>
+            </div>
+            <div class="tutorial-demo move-demo" aria-hidden="true">
+              <span>
+                ←
+              </span>
+              <i class="mini-player">
+              </i>
+              <span>
+                →
+              </span>
+            </div>
+          </li>
+          <li>
+            <span class="step-number">
+              2
+            </span>
+            <div>
+              <h3>
+                Recoge refuerzos
+              </h3>
+              <p>
+                Los objetos verdes del carril izquierdo aumentan tus soldados. Con 18 recibirás suministros.
+              </p>
+            </div>
+            <div class="tutorial-demo " aria-hidden="true">
+              <i class="mini-pickup">
+                +2
+              </i>
+              <span>
+                ↓
+              </span>
+              <i class="mini-player">
+              </i>
+            </div>
+          </li>
+          <li>
+            <span class="step-number">
+              3
+            </span>
+            <div>
+              <h3>
+                Elimina enemigos
+              </h3>
+              <p>
+                Defiende el centro: disparas automáticamente. Si llegan a tu posición, pierdes vida.
+              </p>
+            </div>
+            <div class="tutorial-demo " aria-hidden="true">
+              <i class="mini-enemy">
+              </i>
+              <span class="cyan">
+                ↑ • ↑
+              </span>
+              <i class="mini-player">
+              </i>
+            </div>
+          </li>
+          <li>
+            <span class="step-number">
+              4
+            </span>
+            <div>
+              <h3>
+                Carga al aliado
+              </h3>
+              <p>
+                Dispárale desde la derecha. Al 100 % ganas soldados, puntos y más daño.
+              </p>
+            </div>
+            <div class="tutorial-demo " aria-hidden="true">
+              <svg class="icon cyan" aria-hidden="true">
+                <use href="#i-shield"/>
+              </svg>
+              <span class="demo-charge">
+              </span>
+              <span class="cyan">
+                100 %
+              </span>
+            </div>
+          </li>
+          <li>
+            <span class="step-number">
+              5
+            </span>
+            <div>
+              <h3>
+                Mejora tus estadísticas
+              </h3>
+              <p>
+                Usa los puntos de mejora para comprar daño, cadencia y vida. Consulta el nivel y el costo.
+              </p>
+            </div>
+            <div class="tutorial-demo upgrade-demo" aria-hidden="true">
+              <svg class="icon red" aria-hidden="true">
+                <use href="#i-enemy"/>
+              </svg>
+              <svg class="icon gold" aria-hidden="true">
+                <use href="#i-bolt"/>
+              </svg>
+              <svg class="icon green" aria-hidden="true">
+                <use href="#i-heart"/>
+              </svg>
+              <span>
+                Daño · Cadencia · Vida
+              </span>
+            </div>
+          </li>
+        </ol>
+        <footer class="screen-footer tutorial-footer">
+          <label class="check-label">
+            <input id="hideTutorial" type="checkbox">
+            No volver a mostrar al jugar
+          </label>
+          <button id="tutorialDoneBtn" class="primary" type="button">
+            <svg class="icon " aria-hidden="true">
+              <use href="#i-right"/>
+            </svg>
+            Entendido
+          </button>
+        </footer>
+      </section>
+      <section id="scoresScreen" class="screen " aria-labelledby="scoresTitle" tabindex="-1" hidden>
+        <header class="screen-heading">
+          <svg class="icon title-icon gold" aria-hidden="true">
+            <use href="#i-cup"/>
+          </svg>
+          <h2 id="scoresTitle">
+            Mejores puntuaciones
+          </h2>
+          <p>
+            Tus 8 mejores partidas, guardadas en este dispositivo.
+          </p>
+        </header>
+        <div class="score-filters" role="group" aria-label="Ordenar puntuaciones">
+          <button type="button" data-sort="score" aria-pressed="true">
+            General
+          </button>
+          <button type="button" data-sort="seconds" aria-pressed="false">
+            Tiempo
+          </button>
+          <button type="button" data-sort="kills" aria-pressed="false">
+            Bajas
+          </button>
+          <button type="button" data-sort="soldiers" aria-pressed="false">
+            Soldados
+          </button>
+        </div>
+        <div class="score-table-wrap">
+          <table class="score-table">
+            <caption id="scoresCaption" class="sr-only">
+              Clasificación ordenada por puntos
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">
+                  <abbr title="Posición">
+                    Pos.
+                  </abbr>
+                </th>
+                <th scope="col">
+                  Puntos
+                </th>
+                <th scope="col">
+                  Bajas
+                </th>
+                <th scope="col">
+                  Soldados
+                </th>
+                <th scope="col">
+                  Tiempo
+                </th>
+              </tr>
+            </thead>
+            <tbody id="scoresList">
+            </tbody>
+          </table>
+          <p id="scoresEmpty" class="empty-state" hidden>
+            Aún no hay partidas guardadas.
+            <br>
+            ¡Tu próxima misión empieza aquí!
+          </p>
+        </div>
+        <p class="muted score-note">
+          — indica un dato que no se guardó en una partida anterior.
+        </p>
+        <footer class="screen-footer">
+          <button id="scoresBackBtn" class="teal" type="button">
+            <svg class="icon " aria-hidden="true">
+              <use href="#i-left"/>
+            </svg>
+            Volver al menú
+          </button>
+        </footer>
+      </section>
+      <section id="settingsScreen" class="screen " aria-labelledby="settingsTitle" tabindex="-1" hidden>
+        <header class="screen-heading">
+          <svg class="icon title-icon gold" aria-hidden="true">
+            <use href="#i-settings"/>
+          </svg>
+          <h2 id="settingsTitle">
+            Ajustes
+          </h2>
+          <p>
+            Prepara tu experiencia de juego.
+          </p>
+        </header>
+        <div class="settings-panel">
+          <label class="setting-row">
+            <span>
+              <strong>
+                Reducir efectos visuales
+              </strong>
+              <small>
+                Menos partículas y transiciones. También se respeta la preferencia de tu sistema.
+              </small>
+            </span>
+            <input id="reduceEffects" type="checkbox">
+          </label>
+          <label class="setting-row">
+            <span>
+              <strong>
+                Omitir tutorial al jugar
+              </strong>
+              <small>
+                Puedes consultarlo siempre desde el menú o la pausa.
+              </small>
+            </span>
+            <input id="skipTutorial" type="checkbox">
+          </label>
+          <label class="setting-row">
+            <span><strong>Música</strong><small>Ambiente futurista en el menú. Comienza al interactuar.</small></span>
+            <input id="musicEnabled" type="checkbox" checked>
+          </label>
+          <label class="setting-row">
+            <span><strong>Efectos de sonido</strong><small>Botones, movimiento, disparos, daño y escuadrón completo.</small></span>
+            <input id="effectsEnabled" type="checkbox" checked>
+          </label>
+          <label class="setting-row audio-volume-row">
+            <span><strong>Volumen general</strong><small><output id="masterVolumeValue" for="masterVolume">50 %</output></small></span>
+            <input id="masterVolume" type="range" min="0" max="100" step="1" value="50" aria-label="Volumen general">
+          </label>
+          <p class="muted">
+            Controles: ← / → o A / D para moverte. P o Escape para pausar. En móvil, desliza sobre el campo de batalla.
+          </p>
+        </div>
+        <p id="settingsStatus" class="status" role="status">
+        </p>
+        <footer class="screen-footer">
+          <button id="settingsBackBtn" class="teal" type="button">
+            <svg class="icon " aria-hidden="true">
+              <use href="#i-left"/>
+            </svg>
+            Volver al menú
+          </button>
+        </footer>
+      </section>
+      <section id="pauseScreen" class="overlay" role="dialog" aria-modal="true" aria-labelledby="pauseTitle" tabindex="-1" hidden>
+        <div class="dialog-panel pause-panel">
+          <svg class="icon title-icon cyan" aria-hidden="true">
+            <use href="#i-pause"/>
+          </svg>
+          <h2 id="pauseTitle">
+            Pausa
+          </h2>
+          <p>
+            La partida queda detenida.
+          </p>
+          <div class="menu-actions">
+            <button id="resumeBtn" class="primary" type="button">
+              <svg class="icon " aria-hidden="true">
+                <use href="#i-play"/>
+              </svg>
+              Continuar
+            </button>
+            <button id="restartBtn" class="teal" type="button">
+              <svg class="icon " aria-hidden="true">
+                <use href="#i-restart"/>
+              </svg>
+              Reiniciar partida
+            </button>
+            <button id="pauseTutorialBtn" class="secondary" type="button">
+              <svg class="icon " aria-hidden="true">
+                <use href="#i-book"/>
+              </svg>
+              Cómo jugar
+            </button>
+            <button id="pauseMenuBtn" class="secondary" type="button">
+              <svg class="icon " aria-hidden="true">
+                <use href="#i-home"/>
+              </svg>
+              Volver al menú
+            </button>
+          </div>
+        </div>
+      </section>
+      <section id="restartScreen" class="overlay" role="alertdialog" aria-modal="true" aria-labelledby="restartTitle" aria-describedby="restartDescription" tabindex="-1" hidden>
+        <div class="dialog-panel confirm-panel">
+          <svg class="icon title-icon red" aria-hidden="true">
+            <use href="#i-alert"/>
+          </svg>
+          <h2 id="restartTitle">
+            ¿Reiniciar partida?
+          </h2>
+          <p id="restartDescription">
+            Se perderá el progreso actual. ¿Deseas continuar?
+          </p>
+          <div class="menu-actions">
+            <button id="confirmRestartBtn" class="danger" type="button">
+              Reiniciar
+            </button>
+            <button id="cancelRestartBtn" class="secondary" type="button">
+              Cancelar
+            </button>
+          </div>
+        </div>
+      </section>
+      <section id="gameOverScreen" class="screen results-screen" aria-labelledby="gameOverTitle" tabindex="-1" hidden>
+        <header class="screen-heading">
+          <svg class="icon title-icon gold" aria-hidden="true">
+            <use href="#i-cup"/>
+          </svg>
+          <h2 id="gameOverTitle">
+            Partida terminada
+          </h2>
+          <p>
+            ¡Buen esfuerzo, soldado!
+          </p>
+        </header>
+        <div class="results-panel">
+          <strong id="finalScore" class="final-score">
+            0 pts
+          </strong>
+          <dl class="result-stats">
+            <div>
+              <dt>
+                <svg class="icon red" aria-hidden="true">
+                  <use href="#i-enemy"/>
+                </svg>
+                Bajas
+              </dt>
+              <dd id="finalKills">
+                0
+              </dd>
+            </div>
+            <div>
+              <dt>
+                <svg class="icon green" aria-hidden="true">
+                  <use href="#i-team"/>
+                </svg>
+                Soldados
+              </dt>
+              <dd id="finalSoldiers">
+                1
+              </dd>
+            </div>
+            <div>
+              <dt>
+                <svg class="icon cyan" aria-hidden="true">
+                  <use href="#i-clock"/>
+                </svg>
+                Tiempo
+              </dt>
+              <dd id="finalTime">
+                00:00
+              </dd>
+            </div>
+          </dl>
+          <div class="record-row">
+            <div>
+              <span class="label gold">
+                Mejor puntuación
+              </span>
+              <strong id="bestScore">
+                0 pts
+              </strong>
+            </div>
+            <p id="recordMessage">
+            </p>
+          </div>
+        </div>
+        <div class="menu-actions result-actions">
+          <button id="replayBtn" class="primary" type="button">
+            <svg class="icon " aria-hidden="true">
+              <use href="#i-play"/>
+            </svg>
+            Jugar otra vez
+          </button>
+          <button id="gameOverScoresBtn" class="teal" type="button">
+            <svg class="icon " aria-hidden="true">
+              <use href="#i-cup"/>
+            </svg>
+            Ver puntuaciones
+          </button>
+          <button id="gameOverMenuBtn" class="secondary" type="button">
+            <svg class="icon " aria-hidden="true">
+              <use href="#i-home"/>
+            </svg>
+            Menú
+          </button>
+        </div>
+      </section>
+      <p id="storageMessage" class="storage-message" role="status" hidden>
+      </p>
+    </main>
+    <div id="orientationGuard" class="overlay orientation-guard" role="dialog" aria-modal="true" aria-labelledby="orientationTitle" tabindex="-1" hidden>
+      <div class="dialog-panel">
+        <h2 id="orientationTitle">Juega en vertical</h2>
+        <p>Gira el dispositivo o amplía la ventana para continuar. Tu partida queda en pausa.</p>
       </div>
-      <div>
-        <span class="label">Vida</span>
-        <strong id="health">3/3</strong>
-      </div>
-      <div>
-        <span class="label">Aliado</span>
-        <strong id="ally">0%</strong>
-      </div>
-      <button id="pauseBtn" class="icon-btn" type="button" aria-label="Pausar partida" title="Pausar">||</button>
-    </section>
-
-    <section class="upgrade-panel" aria-label="Mejoras">
-      <div class="bank">
-        <span class="label">Mejoras</span>
-        <strong id="coins">0 pts</strong>
-      </div>
-      <button id="damageUpgradeBtn" type="button">Daño</button>
-      <button id="rateUpgradeBtn" type="button">Cadencia</button>
-      <button id="healthUpgradeBtn" type="button">Vida</button>
-    </section>
-
-    <canvas id="game" width="390" height="720" aria-label="Juego"></canvas>
-
-    <section class="controls" aria-label="Controles">
-      <button id="leftBtn" type="button" aria-label="Mover a la izquierda">&lt;</button>
-      <button id="restartBtn" type="button">Reiniciar</button>
-      <button id="rightBtn" type="button" aria-label="Mover a la derecha">&gt;</button>
-    </section>
-
-    <section id="menuScreen" class="overlay menu-screen">
-      <h1>Escuadron de Tres Carriles</h1>
-      <p>Defiende el carril central, reúne refuerzos y decide cuándo cargar al aliado.</p>
-      <div class="menu-actions">
-        <button id="startBtn" type="button">Iniciar partida</button>
-        <button id="scoresBtn" class="secondary" type="button">Puntuaciones anteriores</button>
-        <button id="exitBtn" class="quiet" type="button">Salir</button>
-      </div>
-      <p id="exitMessage" class="status" aria-live="polite"></p>
-    </section>
-
-    <section id="scoresScreen" class="overlay" hidden>
-      <h2>Puntuaciones</h2>
-      <ol id="scoresList" class="scores-list"></ol>
-      <button id="scoresBackBtn" type="button">Volver al menu</button>
-    </section>
-
-    <section id="pauseScreen" class="overlay compact" hidden>
-      <h2>Pausa</h2>
-      <p>La partida queda detenida.</p>
-      <div class="menu-actions">
-        <button id="resumeBtn" type="button">Continuar</button>
-        <button id="pauseMenuBtn" class="secondary" type="button">Volver al menu</button>
-      </div>
-    </section>
-
-    <section id="gameOverScreen" class="overlay" hidden>
-      <h2>Partida terminada</h2>
-      <p id="finalScore"></p>
-      <div class="menu-actions">
-        <button id="replayBtn" type="button">Jugar otra vez</button>
-        <button id="gameOverScoresBtn" class="secondary" type="button">Ver puntuaciones</button>
-        <button id="gameOverMenuBtn" class="quiet" type="button">Menu</button>
-      </div>
-    </section>
-  </main>
-
-  <script src="game.js"></script>
-</body>
+    </div>
+    <script src="audio-manager.js"></script>
+    <script src="game.js">
+    </script>
+  </body>
 </html>

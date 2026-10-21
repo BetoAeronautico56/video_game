@@ -1,0 +1,58 @@
+[
+  {
+    "function": "newState",
+    "unchanged": true
+  },
+  {
+    "function": "laneX",
+    "unchanged": true
+  },
+  {
+    "function": "playerY",
+    "unchanged": true
+  },
+  {
+    "function": "clampLane",
+    "unchanged": true
+  },
+  {
+    "function": "upgradeCost",
+    "unchanged": true
+  },
+  {
+    "function": "spawnWave",
+    "unchanged": true
+  },
+  {
+    "function": "pickEnemyType",
+    "unchanged": true
+  },
+  {
+    "function": "spawnEnemy",
+    "unchanged": true
+  },
+  {
+    "function": "spawnPickup",
+    "unchanged": true
+  },
+  {
+    "function": "spawnSupplyPickup",
+    "unchanged": true
+  },
+  {
+    "function": "spawnSpecialPickup",
+    "unchanged": true
+  },
+  {
+    "function": "shoot",
+    "unchanged": true
+  },
+  {
+    "function": "hasPowerPickup",
+    "unchanged": true
+  },
+  {
+    "function": "updatePower",
+    "unchanged": true
+  }
+]

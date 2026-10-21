@@ -20,6 +20,17 @@ El jugador controla un escuadron en tres carriles:
 - Poder temporal a partir de los 25 segundos.
 - Al llegar a 18 soldados, el carril izquierdo cambia de refuerzos a suministros.
 
+## Rediseño UX/UI
+
+El rediseño UX/UI incorpora tutorial, ajustes, clasificación por distintas estadísticas,
+resultados con récord y reinicio con confirmación desde pausa. Conserva las mecánicas
+y los costos de las mejoras.
+
+- [Comparación visual del antes, wireframes y resultado](docs/ux-ui-redesign/index.html).
+- [Informe técnico, matriz de implementación y validación](docs/ux-ui-redesign/README.md).
+- [Modo inmersivo, orientación vertical y audio: implementación y pruebas](docs/mobile-audio/README.md).
+- Pruebas funcionales web: `node tests/browser-check.mjs` (Chrome local y Node con WebSocket integrado; validado con Node 24).
+
 ## Archivos principales
 
 - `index.html`: estructura visual del juego, HUD, menu, pausa, puntuaciones y botones de mejora.

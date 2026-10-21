@@ -1,0 +1,460 @@
+{
+  "browser": "Chrome headless via CDP",
+  "date": "2026-10-19T22:53:42.536Z",
+  "fixtures": "Scores and combat scenarios are injected into an isolated test profile. Screenshots are actual application renders, not wireframes.",
+  "results": [
+    {
+      "name": "Initial menu and accessible play action",
+      "status": "passed"
+    },
+    {
+      "name": "First play opens five-step tutorial",
+      "status": "passed"
+    },
+    {
+      "name": "Tutorial starts a real game and saves preference",
+      "status": "passed"
+    },
+    {
+      "name": "Keyboard moves left",
+      "status": "passed"
+    },
+    {
+      "name": "Button moves right and respects lane bounds",
+      "status": "passed"
+    },
+    {
+      "name": "Touch swipe moves one lane",
+      "status": "passed"
+    },
+    {
+      "name": "Pause freezes game state",
+      "status": "passed"
+    },
+    {
+      "name": "Pause tutorial and shortcuts preserve state",
+      "status": "passed"
+    },
+    {
+      "name": "Tutorial returns to pause without restart",
+      "status": "passed"
+    },
+    {
+      "name": "Restart asks confirmation and focuses Cancel",
+      "status": "passed"
+    },
+    {
+      "name": "Keyboard cannot bypass confirmation",
+      "status": "passed"
+    },
+    {
+      "name": "Escape cancels restart and preserves state",
+      "status": "passed"
+    },
+    {
+      "name": "Restart dialog traps keyboard focus",
+      "status": "passed"
+    },
+    {
+      "name": "Reverse Tab remains inside dialog",
+      "status": "passed"
+    },
+    {
+      "name": "Confirmed restart resets once",
+      "status": "passed"
+    },
+    {
+      "name": "Original improvement costs preserved",
+      "status": "passed"
+    },
+    {
+      "name": "All three upgrades purchase with original progression",
+      "status": "passed"
+    },
+    {
+      "name": "Insufficient points disables purchase",
+      "status": "passed"
+    },
+    {
+      "name": "Max upgrade level is explicit and disabled",
+      "status": "passed"
+    },
+    {
+      "name": "Collecting reinforcements retains rewards",
+      "status": "passed"
+    },
+    {
+      "name": "Left lane switches to supplies at 18 soldiers",
+      "status": "passed"
+    },
+    {
+      "name": "Enemy reward counted once",
+      "status": "passed"
+    },
+    {
+      "name": "Actual bullet collision eliminates enemy and awards points",
+      "status": "passed"
+    },
+    {
+      "name": "Captain damage and visual feedback preserved",
+      "status": "passed"
+    },
+    {
+      "name": "Ally activates at original threshold and rewards",
+      "status": "passed"
+    },
+    {
+      "name": "Original temporary power remains operational",
+      "status": "passed"
+    },
+    {
+      "name": "Special pickup spawns after 25 seconds",
+      "status": "passed"
+    },
+    {
+      "name": "Resume restarts animation without reset",
+      "status": "passed"
+    },
+    {
+      "name": "Results include duration, best and strict record gap",
+      "status": "passed"
+    },
+    {
+      "name": "Game over persists result exactly once",
+      "status": "passed"
+    },
+    {
+      "name": "Repeated game over cannot duplicate score",
+      "status": "passed"
+    },
+    {
+      "name": "General filter sorts by points",
+      "status": "passed"
+    },
+    {
+      "name": "Time filter and hour format work",
+      "status": "passed"
+    },
+    {
+      "name": "Kills filter works",
+      "status": "passed"
+    },
+    {
+      "name": "Soldiers filter works",
+      "status": "passed"
+    },
+    {
+      "name": "Missing historical fields remain unknown",
+      "status": "passed"
+    },
+    {
+      "name": "Settings really enable reduced effects",
+      "status": "passed"
+    },
+    {
+      "name": "Preferences persist after reload",
+      "status": "passed"
+    },
+    {
+      "name": "Returning player skips tutorial",
+      "status": "passed"
+    },
+    {
+      "name": "New record compares against previous best",
+      "status": "passed"
+    },
+    {
+      "name": "Tied record has distinct message",
+      "status": "passed"
+    },
+    {
+      "name": "Browser exit explains closing the tab",
+      "status": "passed"
+    },
+    {
+      "name": "Menu fits width 320x568",
+      "status": "passed"
+    },
+    {
+      "name": "Playable canvas and visible controls 320x568",
+      "status": "passed"
+    },
+    {
+      "name": "Touch targets at least 44px 320x568",
+      "status": "passed"
+    },
+    {
+      "name": "HUD fits historical high score and full ally 320x568",
+      "status": "passed"
+    },
+    {
+      "name": "Tutorial has no horizontal overflow 320x568",
+      "status": "passed"
+    },
+    {
+      "name": "Menu fits width 390x844",
+      "status": "passed"
+    },
+    {
+      "name": "Playable canvas and visible controls 390x844",
+      "status": "passed"
+    },
+    {
+      "name": "Touch targets at least 44px 390x844",
+      "status": "passed"
+    },
+    {
+      "name": "HUD fits historical high score and full ally 390x844",
+      "status": "passed"
+    },
+    {
+      "name": "Tutorial has no horizontal overflow 390x844",
+      "status": "passed"
+    },
+    {
+      "name": "Menu fits width 768x1024",
+      "status": "passed"
+    },
+    {
+      "name": "Playable canvas and visible controls 768x1024",
+      "status": "passed"
+    },
+    {
+      "name": "HUD fits historical high score and full ally 768x1024",
+      "status": "passed"
+    },
+    {
+      "name": "Tutorial has no horizontal overflow 768x1024",
+      "status": "passed"
+    },
+    {
+      "name": "Menu fits width 1366x900",
+      "status": "passed"
+    },
+    {
+      "name": "Playable canvas and visible controls 1366x900",
+      "status": "passed"
+    },
+    {
+      "name": "HUD fits historical high score and full ally 1366x900",
+      "status": "passed"
+    },
+    {
+      "name": "Tutorial has no horizontal overflow 1366x900",
+      "status": "passed"
+    },
+    {
+      "name": "Menu fits width 844x390",
+      "status": "passed"
+    },
+    {
+      "name": "Playable canvas and visible controls 844x390",
+      "status": "passed"
+    },
+    {
+      "name": "HUD fits historical high score and full ally 844x390",
+      "status": "passed"
+    },
+    {
+      "name": "Tutorial has no horizontal overflow 844x390",
+      "status": "passed"
+    },
+    {
+      "name": "System reduced-motion preference respected",
+      "status": "passed"
+    },
+    {
+      "name": "Malformed score storage shows empty state",
+      "status": "passed"
+    },
+    {
+      "name": "Unexpected score storage shape is handled",
+      "status": "passed"
+    },
+    {
+      "name": "Audio never autoplays or allocates a context on page load",
+      "status": "passed"
+    },
+    {
+      "name": "Trusted interaction unlocks actual Web Audio",
+      "status": "passed"
+    },
+    {
+      "name": "Original menu loop is rendered and playing",
+      "status": "passed"
+    },
+    {
+      "name": "Music buffer has a nonzero, unclipped waveform",
+      "status": "passed"
+    },
+    {
+      "name": "Music toggle stops only music",
+      "status": "passed"
+    },
+    {
+      "name": "Music toggle reuses original buffer",
+      "status": "passed"
+    },
+    {
+      "name": "Effects toggle mutes SFX while keeping music",
+      "status": "passed"
+    },
+    {
+      "name": "Zero master volume suspends all audio",
+      "status": "passed"
+    },
+    {
+      "name": "Volume keyboard control restores audio and persists",
+      "status": "passed"
+    },
+    {
+      "name": "All audio preferences survive reload without autoplay",
+      "status": "passed"
+    },
+    {
+      "name": "Menu navigation never duplicates or restarts the same loop",
+      "status": "passed"
+    },
+    {
+      "name": "Starting a game fades out menu music",
+      "status": "passed"
+    },
+    {
+      "name": "Out-of-bounds movement produces no sound",
+      "status": "passed"
+    },
+    {
+      "name": "Valid keyboard movement emits exactly one movement effect",
+      "status": "passed"
+    },
+    {
+      "name": "Direction button has movement sound without duplicate click",
+      "status": "passed"
+    },
+    {
+      "name": "An 18-soldier volley emits one sound and retains 18 bullets",
+      "status": "passed"
+    },
+    {
+      "name": "Rapid shots are throttled with a single shot voice",
+      "status": "passed"
+    },
+    {
+      "name": "Enemy defeat sounds once and preserves rewards",
+      "status": "passed"
+    },
+    {
+      "name": "Nonlethal enemy hit does not play defeat effect",
+      "status": "passed"
+    },
+    {
+      "name": "Fractional ally charge without displayed percentage change stays silent",
+      "status": "passed"
+    },
+    {
+      "name": "Increasing displayed ally percentage plays a soft charge sound",
+      "status": "passed"
+    },
+    {
+      "name": "Ally charge sound pitch rises with real progress",
+      "status": "passed"
+    },
+    {
+      "name": "Rapid ally hits never accumulate multiple charge voices",
+      "status": "passed"
+    },
+    {
+      "name": "Fully activated ally does not keep playing charge sounds",
+      "status": "passed"
+    },
+    {
+      "name": "Real damage emits one distinct effect and subtracts one life",
+      "status": "passed"
+    },
+    {
+      "name": "No damage sound when health cannot decrease",
+      "status": "passed"
+    },
+    {
+      "name": "Pickup at 17 reaches 18 and emits achievement once",
+      "status": "passed"
+    },
+    {
+      "name": "Remaining at maximum soldiers never repeats achievement",
+      "status": "passed"
+    },
+    {
+      "name": "Reaching maximum again through ally emits a new achievement",
+      "status": "passed"
+    },
+    {
+      "name": "Active sound voices are bounded by effect type",
+      "status": "passed"
+    },
+    {
+      "name": "All reused effects contain nonzero, bounded PCM samples",
+      "status": "passed"
+    },
+    {
+      "name": "Pause stops gameplay audio and voices finish cleanly",
+      "status": "passed"
+    },
+    {
+      "name": "Help from pause retains state and plays one button sound",
+      "status": "passed"
+    },
+    {
+      "name": "Resume restores audio scene without restarting game",
+      "status": "passed"
+    },
+    {
+      "name": "Background tab pauses game and suspends actual AudioContext",
+      "status": "passed"
+    },
+    {
+      "name": "Returning to foreground keeps game paused and music silent",
+      "status": "passed"
+    },
+    {
+      "name": "Returning to menu starts one reused music buffer",
+      "status": "passed"
+    },
+    {
+      "name": "Game-over scene does not leave a music loop or active effects",
+      "status": "passed"
+    },
+    {
+      "name": "Native background callback pauses gameplay and suspends audio",
+      "status": "passed"
+    },
+    {
+      "name": "Short native landscape window presents existing-style guard",
+      "status": "passed"
+    },
+    {
+      "name": "Orientation fallback cannot accidentally restart or resume",
+      "status": "passed"
+    },
+    {
+      "name": "Returning to portrait restores access and preserves paused state",
+      "status": "passed"
+    },
+    {
+      "name": "Player can resume normally after orientation recovery",
+      "status": "passed"
+    },
+    {
+      "name": "Missing Web Audio degrades safely without blocking gameplay",
+      "status": "passed"
+    },
+    {
+      "name": "Unavailable storage preserves result in session",
+      "status": "passed"
+    },
+    {
+      "name": "No runtime or console errors",
+      "status": "passed"
+    }
+  ],
+  "errors": []
+}

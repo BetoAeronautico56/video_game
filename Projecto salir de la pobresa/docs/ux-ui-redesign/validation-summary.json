@@ -1,0 +1,29 @@
+{
+  "browser_checks_passed": 69,
+  "browser_errors": 0,
+  "android_build": "BUILD SUCCESSFUL",
+  "unit_tests": {
+    "name": "com.getcapacitor.myapp.ExampleUnitTest",
+    "tests": "1",
+    "skipped": "0",
+    "failures": "0",
+    "errors": "0",
+    "timestamp": "2026-10-18T18:40:15.336Z",
+    "hostname": "CARLOSLORA",
+    "time": "0.005"
+  },
+  "instrumented_tests": "Not executed: No connected devices!",
+  "apk": "android\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
+  "apk_sha256": "ea78ee54ab884ce7335c30a32eb066b1deb9726360f0b5551308bfa51e314fab",
+  "web_assets_sha256": {
+    "index.html": "0dfdc51dc3cb5f207478684e68e49697fb0ae66712f66efb637c6a7f646f2942",
+    "styles.css": "3866cae27854cb9556e43e18d7ea1e136ec7a8c7e1fd27a4e4d11a02e601e395",
+    "game.js": "b110ac46aafdeb229a12a5ef46b7c3b4741578b4fe370870ee9351adc11d506f",
+    "manifest.json": "42b175859cd7f9f4756edff5b70a6e609295d44c8e01c1e5410ed0316156850e"
+  },
+  "screenshots_before": 5,
+  "screenshots_after": 24,
+  "app_id_and_resource_audit": "passed",
+  "gallery_links_audit": "passed",
+  "packaged_apk_assets_match_source": true
+}
